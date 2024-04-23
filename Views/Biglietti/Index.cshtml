@@ -1,0 +1,91 @@
+﻿@model IEnumerable<HomeTeamWebSite.Models.Biglietti>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<style>
+    body {
+        /*background-color: #f8f9fa;*/
+        background: linear-gradient(to bottom, #B03034 0%, #FEFEFE 100%);
+    }
+</style>
+
+
+
+<div class="container mt-5 mb-3 min-vh-100">
+    @foreach (var item in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header bg-dark text-white">
+                Ticket:
+            </div>
+            <div class="card-body row @(item.IdPartita == 1 ? "special-background-ticket" : "sfondo") m-0">
+               
+                <div class="col-md-8 p-0">
+                   
+                    <div class="p-3">
+                   
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Partite.SquadraCasa) vs @Html.DisplayFor(modelItem => item.Partite.SquadraOspite)</h5>
+                        <h3 class="card-title text-white">@Html.DisplayFor(modelItem => item.Partite.Data)</h3>
+                        <p class="card-text fw-bold text-white">Sector: @Html.DisplayFor(modelItem => item.TipoPosto.Titolo)</p>
+                        <p class="card-text fw-bold text-white">Price: <span id="price-@item.IdBiglietti" data-base-price="@Html.DisplayFor(modelItem => item.TipoPosto.Prezzo)">@Html.DisplayFor(modelItem => item.TipoPosto.Prezzo)</span>£ - Each</p>
+                        <p class="fw-bold text-white">Ticket Code: @GenerateRandomCode()</p>
+                        @using (Html.BeginForm("PushToDettaglioVendita", "Biglietti", FormMethod.Post))
+                        {
+                            @Html.Hidden("id", item.IdBiglietti)
+                            <div class="d-flex align-items-center">
+                                <label for="Quantita" class="form-label fw-bold me-1 text-white">Quantity:</label>
+                                <input id="Quantita" type="number" name="quantita" value="1" min="1" max="10" class="form-control w-auto" style="width: 60px;">
+                                <input type="submit" value="Confirm" class="btn btn-success ms-3" />
+                            </div>
+                        }
+                    </div>
+                </div>
+              
+                <div class="col-md-4 d-flex justify-content-center align-items-center p-3">
+                    
+                    <img src="~/Content/imgPartite/qr.png" class="bg-white bg-opacity-75 img-fluid rounded" style="width: 150px;" />
+                </div>
+            </div>
+            <div class="card-footer text-muted bg-dark">
+                @Html.ActionLink("Delete Ticket", "Delete", new { id = item.IdBiglietti }, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+    }
+</div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('input[name="quantita"]').on('change', function () {
+            var quantity = parseInt($(this).val()); // converte la quantità in un intero
+            var cardBody = $(this).closest('.card-body'); // trova il contenitore della carta corrispondente
+            var basePrice = parseFloat(cardBody.find('span[data-base-price]').data('base-price')); // ottiene il prezzo base e lo converte in float
+
+            // Controlla se sia la quantità che il prezzo base sono numeri validi
+            if (!isNaN(quantity) && !isNaN(basePrice)) {
+                var totalPrice = basePrice * quantity; // calcola il prezzo totale
+                cardBody.find('span[data-base-price]').text(totalPrice.toFixed(2)); // aggiorna il prezzo visualizzato
+            } else {
+                console.log('One of the values is NaN', quantity, basePrice);
+            }
+        });
+    });
+</script>
+
+
+
+@functions {
+    public string GenerateRandomCode()
+    {
+        Random random = new Random();
+        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        return new string(Enumerable.Repeat(chars, 8)
+          .Select(s => s[random.Next(s.Length)]).ToArray());
+    }
+}

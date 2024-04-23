@@ -1,0 +1,64 @@
+﻿@model HomeTeamWebSite.Models.Biglietti
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+</style>
+
+<div class="container min-vh-100 mt-5">
+
+    <h3 class="text-center">Are you sure you want to delete your ticket?</h3>
+    <div class="card">
+        <div class="card-header">
+            Tickets Info:
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4">
+                    Match:
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Partite.SquadraCasa) VS @Html.DisplayFor(model => model.Partite.SquadraOspite)
+                </dd>
+
+                <dt class="col-sm-4">
+                    Sector:
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.TipoPosto.Titolo)
+                </dd>
+
+                <dt class="col-sm-4">
+                    Ticket Code:
+                </dt>
+                <dd class="col-sm-8">
+                    @GenerateRandomCode()
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-danger">Delete</button> <!-- Stilizzato come bottone Bootstrap -->
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" }) <!-- Link come bottone Bootstrap -->
+            }
+        </div>
+    </div>
+</div>
+
+
+@functions {
+    public string GenerateRandomCode()
+    {
+        Random random = new Random();
+        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        return new string(Enumerable.Repeat(chars, 8)
+          .Select(s => s[random.Next(s.Length)]).ToArray());
+    }
+}

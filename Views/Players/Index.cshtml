@@ -1,0 +1,98 @@
+﻿@model IEnumerable<HomeTeamWebSite.Models.Players>
+
+
+
+<style>
+    body {
+        background: url('../Content/img/sfondoHome.jpg') no-repeat;
+        background-size: cover;
+        background-position-x: center;
+        background-attachment: fixed;
+    }
+
+    input {
+        max-width: 300px;
+    }
+</style>
+
+<h1 class="text-center my-3 titolo-player">Our Player - Your Gunners</h1>
+
+
+<div class="container">
+    @using (Html.BeginForm("Index", "Players", FormMethod.Get))
+    {
+        <div class="my-4 ">
+            <div class="input-group">
+                <input type="text" class="form-control" name="searchString" placeholder="Search Player..." aria-label="Nome Giocatore">
+                <button type="submit" class="btn btn-dark fw-bold">Search</button>
+            </div>
+        </div>
+
+    }
+
+
+    <div class="row min-vh-100">
+
+        @foreach (var player in Model)
+        {
+            <div class="col-sm-12 col-md-6">
+                <div class="card mb-2 bg-white bg-opacity-75">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-6 col-xlg-4">
+                            <img src="@player.strCutout" alt="img player" class="img-fluid">
+                        </div>
+                        <div class="col-md-12 col-lg-6 col-xlg-8">
+                            <div class="card-body">
+                                <h3 class="card-title">@player.strPlayer</h3>
+
+                                <div class="d-flex">
+                                    <p class="card-text fw-bold">@String.Format("{0:dd/MM/yyyy}", player.dateBorn)</p>
+                                    <p class="card-text ms-2 fw-bold">@player.strNationality</p>
+                                </div>
+                                <p class="card-tex fw-bold">Position: @player.strPosition</p>
+
+                                <button type="button" class="custom-btn-player" data-bs-toggle="modal" data-bs-target="#playerModal_@player.idPlayer">
+                                    Show Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="playerModal_@player.idPlayer" tabindex="-1" aria-labelledby="playerModalLabel_@player.idPlayer" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title " id="playerModalLabel_@player.idPlayer">Player's Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p><strong>Name:</strong> @player.strPlayer</p>
+                            <p><strong>Date Born:</strong> @String.Format("{0:dd/MM/yyyy}", player.dateBorn)</p>
+                            <p><strong>Birth Location:</strong> @player.strBirthLocation</p>
+                            <p><strong>Nationality:</strong> @player.strNationality</p>
+                            <p><strong>Position:</strong> @player.strPosition</p>
+                            
+                            @if (player.strNumber != null)
+                            {
+                                <p><strong>Number:</strong> @player.strNumber</p>
+                            }
+                            else
+                            {
+                                <p><strong>WHAT THE ROCK IS COOKING</strong></p>
+                            }
+
+                            <p><strong>Height:</strong> @player.strHeight</p>
+                            <p><strong>Wage:</strong> @player.strWage</p>
+                            <p><strong>Value</strong> @player.strSigning</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

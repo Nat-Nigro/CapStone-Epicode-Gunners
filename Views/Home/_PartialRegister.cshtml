@@ -1,0 +1,72 @@
+﻿
+@model HomeTeamWebSite.Models.Utenti
+
+@{
+    ViewBag.Title = "Register";
+}
+
+
+
+    @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { id = "registerForm" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal mb-3 bg-white bg-opacity-75 p-3 rounded-4 ">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = " text-warning fw-bold bg-dark bg-opacity-75 rounded-pill " })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2 text-dark fw-bold fs-4" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control fw-bold" } })
+                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = " text-warning fw-bold bg-dark bg-opacity-75 rounded-pill " })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Cognome, htmlAttributes: new { @class = "control-label col-md-2 text-dark  fw-bold fs-4" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Cognome, new { htmlAttributes = new { @class = "form-control fw-bold" } })
+                    @Html.ValidationMessageFor(model => model.Cognome, "", new { @class = "text-warning fw-bold bg-dark bg-opacity-75 rounded-pill " })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label col-md-2 text-dark  fw-bold fs-4" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control fw-bold" } })
+                    @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-warning fw-bold bg-dark bg-opacity-75 rounded-pill " })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Psw, htmlAttributes: new { @class = "control-label col-md-2 text-dark  fw-bold fs-4" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Psw, new { htmlAttributes = new { @class = "form-control fw-bold" } })
+                    @Html.ValidationMessageFor(model => model.Psw, "", new { @class = "text-warning fw-bold bg-dark bg-opacity-75 rounded-pill ext-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2 text-dark fw-bold fs-4" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control fw-bold" } })
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-warning fw-bold bg-dark bg-opacity-75 rounded-pill " })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 text-end">
+                    <input type="submit" value="Confirm Registration" class="btnCompletaForm mt-2" />
+                </div>
+            </div>
+        </div>
+    }
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

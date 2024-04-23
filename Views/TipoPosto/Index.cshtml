@@ -1,0 +1,51 @@
+﻿@model IEnumerable<HomeTeamWebSite.Models.TipoPosto>
+
+@{
+    ViewBag.Title = "Index";
+    var idPartita = Request.QueryString["idPartita"];
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+</style>
+
+
+
+<div class="container my-5">
+    @foreach (var item in Model)
+    {
+        <div class="card mb-3 @(item.IdTipoPosto % 2 == 0 ? "card-anim-left" : "card-anim-right")">
+            <div class="row g-0">
+                <div class="col-md-2">
+                    <img src="~/Content/imgPartite/@item.img" class="img-fluid rounded-start" style="max-height: 250px; object-fit: cover;" alt="Image description">
+                </div>
+                <div class="col-md-10">
+                    <div class="card-body" style="padding: 10px;">
+                        <h5 class="card-title" style="margin-bottom: 0.5rem;">@Html.DisplayFor(modelItem => item.Titolo)</h5>
+                        <p class="card-text fw-bold" style="font-size: 0.9rem;">@Html.DisplayFor(modelItem => item.Descrizione)</p>
+
+                        <p class="card-text"><small class="text-muted fw-bold">Price: @Html.DisplayFor(modelItem => item.Prezzo) £</small></p>
+                        @using (Html.BeginForm("CreateTickets", "Biglietti", FormMethod.Post))
+                        {
+                            @Html.Hidden("idPartita", idPartita)
+                            @Html.Hidden("idTipoPosto", item.IdTipoPosto)
+                            <input type="submit" value="Confirm" class="btn btn-success fw.bold" style="font-size: 0.8rem; padding: 5px 10px;">
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+ 
+    $('.card').css('visibility', 'visible');
+});
+</script>
+

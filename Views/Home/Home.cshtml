@@ -1,0 +1,352 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+
+@* --------------- Custom Toasts ----------- *@
+
+@if (TempData["LoginRiuscito"] != null)
+{
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "500",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        toastr.success('@TempData["LoginRiuscito"]')
+    </script>
+}
+
+@if (TempData["Registrazione Riuscita"] != null)
+{
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "500",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        toastr.success('@TempData["Registrazione Riuscita"]')
+    </script>
+}
+
+@if (TempData["TicketBought"] != null)
+{
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "500",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+         }
+         toastr.success('@TempData["TicketBought"]')
+    </script>
+}
+
+@*------------------------------------------------------------------*@
+
+<style>
+    body {
+        /* background-color: gainsboro;*/
+        background-color: #F1F2F3;
+    }
+</style>
+
+
+
+<h1 class="my-4 text-center bebas-neue-regular">Arsenal FC Official Website<img src="~/Content/img/cannone.png" class="ms-2" width="180" /> </h1>
+
+@*<div class="d-flex align-items-center justify-content-around bg-white bg-opacity-75 carousel-slide">
+        <img src="~/Content/img/adidas.png" width="100" />
+        <img src="~/Content/img/prime.png" width="100" />
+        <img src="~/Content/img/emirates.png" width="100" />
+        <img src="~/Content/img/visit.png" width="100" class="sponsor" />
+        <img src="~/Content/img/sobha.png" width="100" class="sponsor" />
+        <img src="~/Content/img/lavazza.png" width="100" class="sponsor" />
+        <img src="~/Content/img/etoro.png" width="100" class="sponsor" />
+        <img src="~/Content/img/efootball.png" width="100" class="sponsor" />
+    </div>*@
+<div class="carousel-container">
+    <div class="carousel-slide py-3">
+        <!-- Duplica le immagini per creare un loop infinito visivamente fluido -->
+        <img src="~/Content/img/adidas.png" width="100" />
+        <img src="~/Content/img/prime.png" width="100" />
+        <img src="~/Content/img/emirates.png" width="100" />
+        <img src="~/Content/img/PremierLogo.png" width="100">
+        <img src="~/Content/img/visit.png" width="100" />
+        <img src="~/Content/img/sobha.png" width="100" />
+        <img src="~/Content/img/lavazza.png" width="100" />
+        <img src="~/Content/img/etoro.png" width="100" />
+        <img src="~/Content/img/efootball.png" width="100" />
+        <img src="~/Content/img/adidas.png" width="100" />
+        <img src="~/Content/img/prime.png" width="100" />
+        <img src="~/Content/img/falogo.png" width="100">
+        <img src="~/Content/img/emirates.png" width="100" />
+        <img src="~/Content/img/visit.png" width="100" />
+        <!-- Duplicazione per l'effetto loop -->
+        <img src="~/Content/img/adidas.png" width="100" />
+        <img src="~/Content/img/prime.png" width="100" />
+        <img src="~/Content/img/emirates.png" width="100" />
+        <img src="~/Content/img/visit.png" width="100" />
+        <img src="~/Content/img/sobha.png" width="100" />
+        <img src="~/Content/img/lavazza.png" width="100" />
+        <img src="~/Content/img/PremierLogo.png" width="100">
+        <img src="~/Content/img/etoro.png" width="100" />
+        <img src="~/Content/img/efootball.png" width="100" />
+        <img src="~/Content/img/falogo.png" width="100">
+        <img src="~/Content/img/adidas.png" width="100" />
+        <img src="~/Content/img/prime.png" width="100" />
+        <img src="~/Content/img/emirates.png" width="100" />
+        <img src="~/Content/img/visit.png" width="100" />
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="row my-4">
+        <div class="col-sm-12 col-md-12 col-lg-8 mb-2">
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="~/Content/img/artetaCaro.jpg" class="d-block w-100 img-carosello" height="700" alt="...">
+                        <div class="carousel-caption d-block">
+                            <h2 class="bg-dark bg-opacity-75 rounded-pill">Coach Arteta</h2>
+                            <p class="display-6 fw-bold custom-carousel-p">"We are ready for these last matches"</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/Content/img/kaiCaro.jpg" class="d-block w-100 " height="700" alt="...">
+                        <div class="carousel-caption d-block ">
+                            <h2 class="bg-dark bg-opacity-75 rounded-pill">Kai Havertz</h2>
+                            <p class="display-6 fw-bold custom-carousel-p">"At the beginning I had some difficulties, now I'm ready to help the team"</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/Content/img/stadioCaro.jpg" class="d-block w-100 " height="700" alt="...">
+                        <div class="carousel-caption d-block">
+                            <h2 class="bg-dark bg-opacity-75 rounded-pill">Restructuring values ​​are underway</h2>
+                            <p class="display-6 fw-bold custom-carousel-p">Renovation work on sector 4-C will begin in June</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/Content/img/ksiCaro.jpg" class="d-block w-100 " height="700" alt="...">
+                        <div class="carousel-caption d-block">
+                            <h2 class="bg-dark bg-opacity-75 rounded-pill">Arsenal x Prime</h2>
+                            <p class="display-6 fw-bold custom-carousel-p">
+                                Prime hydradion will be Arsenal's official drink sponsor for the next 3 seasons
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+
+
+        <!--   CARD PER RISULTATO   -->
+
+        <div class="col-sm-12 col-md-12 col-lg-4">
+            <div class="border border-opacity-100 lastMatchBg">
+                <div class="text-center my-5">
+                    <div class="row justify-content-center align-items-center custom-last-match">
+                        <h2 class="mb-2 text-white rubik">Last Match</h2>
+
+                        <div class="col-4">
+                            <img src="~/Content/img/logoTot.png" class="img-fluid" alt="Stemma Squadra di Casa" style="max-width: 100px;">
+                        </div>
+                        <div class="col-2 result-container">
+                            <h3 class="text-white ">1 - 2</h3>
+                        </div>
+                        <div class="col-4">
+                            <img src="~/Content/img/ArsenalLogo.png" class="img-fluid" alt="Stemma Squadra Ospite" style="max-width: 100px;">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-around text-white fw-bold">
+                    <p class="rubik">16' Dejan Kulusveski</p>
+                    <div>
+                        <p class="rubik">25' Gabriel Jesus</p>
+                        <p class="rubik">77' Bukayo Saka</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--     SEZIONE TROFEI     -->
+
+    <main class="">
+        <h2 class="text-center my-3 bebas-neue-regular">Our trophies, our history</h2>
+        <div class="row mt-2 text-center">
+            <div class="col-4">
+                <img src="~/Content/img/PremierLogo.png" width="300" alt="Football" class="img-fluid mb-3">
+            </div>
+            <div class="col-4">
+                <img src="~/Content/img/communityShield.png" width="200" alt="Football" class="img-fluid mb-3">
+            </div>
+            <div class="col-4">
+                <img src="~/Content/img/falogo.png" width="300" alt="Football" class="img-fluid mb-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="container mt-4" id="progress-section">
+
+                    <!-- Campionato Inglese (Premier League) -->
+                    <h5 class="text-dark">Premier League - 13 Titles</h5>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="13" aria-valuemin="0" aria-valuemax="20" aria-label="Campionato Inglese">0</div>
+                    </div>
+
+                    <!-- FA Cup -->
+                    <h5 class="text-dark">FA Cup - 14 Titles</h5>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="14" aria-valuemin="0" aria-valuemax="20" aria-label="FA Cup">0</div>
+                    </div>
+
+                    <!-- EFL Cup-->
+                    <h5 class="text-dark">EFL Cup - 2 Titles</h5>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="2" aria-valuemin="0" aria-valuemax="4" aria-label="EFL Cup">0</div>
+                    </div>
+
+                    <!-- Community Shield -->
+                    <h5 class="text-dark">Community Shield - 16 Titles</h5>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="16" aria-valuemin="0" aria-valuemax="20" aria-label="Community Shield">0</div>
+                    </div>
+
+                    <!-- Coppa delle Coppe -->
+                    <h5 class="text-dark">UEFA Cup Winners' Cup - 1 Title</h5>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-dark" role="progressbar" style="width: 0%;" aria-valuenow="1" aria-valuemin="0" aria-valuemax="4" aria-label="UEFA Cup Winners' Cup">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+    <!--   ANTERPIMA STORE ACQUISTI    -->
+
+    <h2 class="text-center my-4 bebas-neue-regular">Official Store</h2>
+
+    <div class="row text-center  bg-dark ">
+        <div class="col-md-4 col-sm-12  p-3 store">
+            <img src="~/Content/img/storeHome.jpg" alt="preview store" class="store-img" />
+            <h4 class="store-titolo1">Be Unique</h4>
+        </div>
+        <div class="col-md-4 col-sm-12  p-3 store ">
+            <img src="~/Content/img/storeHome3.jpg" alt="preview store" class="store-img" />
+            <a href="@Url.Action("Index", "Prodotti")" class=" store-bottone">Go To Shop</a>
+
+        </div>
+        <div class="col-md-4 col-sm-12  p-3 store ">
+            <img src="~/Content/img/storeHome2.jpg" alt="preview store" class="store-img" />
+            <h4 class="store-titolo2">Be Gunners</h4>
+        </div>
+    </div>
+
+
+
+    <!-- SEZIONE BIGLIETTI PARTITE -->
+    <h2 class="text-center my-4 bebas-neue-regular">Buy your ticket here</h2>
+
+    <div class="row mt-3">
+        <div class="bigliettiHome">
+            <p class="text-white display-6 custom-carousel-p rubik">Last matches of the season</p>
+            <p class="text-white display-6 custom-carousel-p rubik">We need you, more than ever</p>
+            <a href="@Url.Action("Index", "Partite")" class="btn btn-warning fw-bold">Buy Tickets Now</a>
+        </div>
+    </div>
+
+</div>
+
+
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var animated = false; // Flag per prevenire l'animazione multipla
+
+            $(window).scroll(function () {
+                var top_of_element = $("#progress-section").offset().top;
+                var bottom_of_element = $("#progress-section").offset().top + $("#progress-section").outerHeight();
+                var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
+                var top_of_screen = $(window).scrollTop();
+
+                if ((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element) && !animated) {
+                    // L'elemento è visibile e l'animazione non è ancora stata eseguita
+                    $('.progress-bar').each(function () {
+                        var max = $(this).attr('aria-valuemax');
+                        var now = $(this).attr('aria-valuenow');
+                        var width = (now / max) * 100;
+                        $(this).css('width', width + '%').text(now);
+                    });
+                    animated = true; // Imposta il flag a true per non ripetere l'animazione
+                }
+            });
+        });
+    </script>
+}
+

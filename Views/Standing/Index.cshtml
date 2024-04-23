@@ -1,0 +1,131 @@
+﻿@model IEnumerable<HomeTeamWebSite.Models.Standings>
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .table-custom th {
+        background-color: #460d46;
+        color: #ffffff;
+    }
+
+    .table-custom tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .table-custom img {
+        height: 30px;
+        width: auto;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 12px 15px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #007BFF;
+        color: #ffffff;
+        font-size: 16px;
+    }
+
+    td {
+        font-size: 14px;
+    }
+
+    .badge {
+        height: 30px;
+        width: auto;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<h1 class="text-center bebas-neue-regular my-3">Standing 2023/2024</h1>
+
+
+<div class="container mt-5 mb-2 min-vh-100">
+    <table class="table table-custom">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Team</th>
+                <th>Played</th>
+                <th class="result">Win</th>
+                <th class="result">Loss</th>
+                <th class="result">Draw</th>
+                <th class="gols">Gols For</th>
+                <th class="gols">Gols Against</th>
+                <th class="gols">Gol Difference</th>
+                <th>Points</th>
+                <th class="form">Form</th>
+                <th class="award-column">Award</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td style="@GetBackgroundColor(item.intRank)">
+                        @item.intRank
+                    </td>
+                    <td class="fw-bold"><img src="@item.strTeamBadge" alt="Stemma" style=" height: 40px; width: auto; vertical-align: middle; margin-right: 10px;" /> @item.strTeam</td>
+                    <td>@item.intPlayed</td>
+                    <td class="result">@item.intWin</td>
+                    <td class="result">@item.intLoss</td>
+                    <td class="result">@item.intDraw</td>
+                    <td class="gols">@item.intGoalsFor</td>
+                    <td class="gols">@item.intGoalsAgainst</td>
+                    <td class="gols">@item.intGoalDifference</td>
+                    <td>@item.intPoints</td>
+                    <td class="form">@item.strForm</td>
+                    <td class="@GetDescriptionClass(item.strDescription) award-column">
+                        @item.strDescription
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@functions {
+    public string GetBackgroundColor(int rank)
+    {
+        if (rank == 18 || rank == 19 || rank == 20)
+            return "background-color: #FFCCCC;";
+        else if (rank == 1 || rank == 2 || rank == 3 || rank == 4)
+            return "background-color: #3968A5;";
+        else if (rank == 5)
+            return "background-color: #f18700;";
+        return "";
+    }
+}
+
+@functions {
+    public string GetDescriptionClass(string description)
+    {
+        if (description.Contains("Champions League"))
+            return "champions-bg";
+        else if (description.Contains("Europa"))
+            return "europa-bg";
+        return "";
+    }
+}

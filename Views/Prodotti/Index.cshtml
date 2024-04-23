@@ -1,0 +1,199 @@
+﻿@model IEnumerable<HomeTeamWebSite.Models.Prodotti>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<style>
+    body {
+        background: linear-gradient(to bottom, #B03034 0%, #FEFEFE 100%);
+    }
+</style>
+
+
+
+@{
+    var cart = Session["cart"] as List<HomeTeamWebSite.Models.Prodotti>;
+    var cartItemCount = cart?.Sum(item => item.Quantita) ?? 0;
+}
+
+
+@if (TempData["AddCart"] != null)
+{
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "500",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        toastr.success('@TempData["AddCart"]')
+    </script>
+}
+
+@if (TempData["Order"] != null)
+{
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "500",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        toastr.success('@TempData["Order"]')
+    </script>
+}
+
+
+
+
+
+
+<div class="container mb-2">
+    <div class="text-center">
+        <h1 class="titoloProdotti">We Are Arsenal - Official Store</h1>
+    </div>
+
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="my-3">
+
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn-crea " })
+
+        </div>
+    }
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-12 col-md-6 col-lg-4 mt-3 ">
+                <div class="card sfondo-card" style="width: 100%;">
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="~/Content/imgProdotti/@item.Immagine" class="d-block w-100" height="290" alt="...">
+                            </div>
+                            @if (item.Immagine2 != null)
+                            {
+                                <div class="carousel-item">
+                                    <img src="~/Content/imgProdotti/@item.Immagine2" class="d-block w-100" height="290" alt="...">
+                                </div>
+                            }
+                            @if (item.Immagine3 != null)
+                            {
+                                <div class="carousel-item">
+                                    <img src="~/Content/imgProdotti/@item.Immagine3" class="d-block w-100" height="290" alt="...">
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                    <div class="card-body ">
+                        <h5 class="card-title fw-bold text-center shadow bg-white">@item.NomeProdotto</h5>
+                        <p class="card-text text-truncate text-dark fw-bold">@item.Descrizione.</p>
+
+
+                        @using (Html.BeginForm("AddToCart", "Prodotti", FormMethod.Post, new { @class = "d-inline" }))
+                        {
+                            @Html.Hidden("id", item.IdProdotto)
+                            <div class="d-flex discountPremium">
+                                <p class="card-text text-dark"><strong>Price: @item.Prezzo.ToString("F2") £ </strong></p>
+                                <p class="text-success ms-2 text-decoration-underline">-15% For Premium Members</p>
+                            </div>
+                            <div>
+                                <label for="Quantita" class="form-label fw-bold me-1">Quantity:</label>
+                                <input id="Quantita" type="number" name="quantita" value="1" min="1" max="10" class="form-control w-auto d-inline" style="width: 50px;" />
+                            </div>
+
+                            <br />
+                            @Html.ActionLink("Details And Sizes", "Details", new { id = item.IdProdotto }, new { @class = "details-btn text-decoration-none my-1" })
+                            <input type="submit" value="Add to Cart 🛒" class="add-cart mt-4" />
+
+                        }
+
+                        <br />
+                        <hr />
+                        @if (User.IsInRole("Admin"))
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { id = item.IdProdotto }, new { @class = "btn btn-warning me-2" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.IdProdotto }, new { @class = "btn btn-danger" })
+                        }
+
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+
+    </div>
+</div>
+
+<a href="@Url.Action("Index","Carrello")" class="btn btn-warning fw-bold go-to-cart" style="position: fixed; right: 20px; bottom: 20px;">
+    Go To Cart 🛒
+</a>
+<button onclick="scrollToTop()" class="btn-up back-to-top fw-bold" style="position: fixed; right: 20px; bottom: 60px;">Back to Top</button>
+
+
+<script>
+    function scrollToTop() {
+        window.scrollTo(0, 0);
+    }
+
+    window.addEventListener('scroll', function () {
+        var footer = document.getElementById('footer');
+        var backButton = document.querySelector('.back-to-top');
+        var cartButton = document.querySelector('.go-to-cart');
+        var footerRect = footer.getBoundingClientRect();
+
+        if (footerRect.top < window.innerHeight) {
+            // Se il footer è visibile, posiziona entrambi i pulsanti in modo assoluto sopra il footer
+            backButton.style.position = 'absolute';
+            backButton.style.bottom = 'auto';
+            backButton.style.top = (footer.offsetTop - backButton.offsetHeight - 20) + 'px';
+
+            cartButton.style.position = 'absolute';
+            cartButton.style.bottom = 'auto';
+            cartButton.style.top = (footer.offsetTop - cartButton.offsetHeight - backButton.offsetHeight - 40) + 'px';
+        } else {
+
+            backButton.style.position = 'fixed';
+            backButton.style.top = 'auto';
+            backButton.style.bottom = '60px';
+
+            cartButton.style.position = 'fixed';
+            cartButton.style.top = 'auto';
+            cartButton.style.bottom = '130px';
+        }
+    });
+</script>
+
+

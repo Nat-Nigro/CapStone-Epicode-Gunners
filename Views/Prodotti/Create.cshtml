@@ -1,0 +1,74 @@
+﻿@model HomeTeamWebSite.Models.Prodotti
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+
+
+<div class="container min-vh-100">
+    <div class="border container mt-3">
+        @using (Html.BeginForm("Create", "Prodotti", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4 class="my-3">Add new product</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                Product Name
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NomeProdotto, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NomeProdotto, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                Description
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Descrizione, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Descrizione, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                Price
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Prezzo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Prezzo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<div class="form-group row my-1">
+            <div class="form-label">Select Image</div>
+            <div class="">
+                <input type="file" name="file" class="form-control" />
+            </div>
+        </div>*@
+            <div class="form-group row my-1">
+                <label class="form-label">By pressing Ctrl, you can select up to 3 images.</label>
+                <div>
+                    <input type="file" name="files" class="form-control" multiple />
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create Product" class="btn btn-success my-2" />
+                </div>
+            </div>
+        </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-info mb-2" })
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

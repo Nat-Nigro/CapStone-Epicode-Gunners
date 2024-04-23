@@ -1,0 +1,633 @@
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Angkor&family=Bungee+Spice&family=Madimi+One&family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Angkor&family=Bebas+Neue&family=Bungee+Spice&family=Madimi+One&family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Angkor&family=Bebas+Neue&family=Bungee+Spice&family=Madimi+One&family=Oswald:wght@200..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+
+/*--------------------------------------------  NAVBAR  ------------------------------------------*/
+nav {
+    position: relative;
+}
+
+.logo-nav {
+    position: absolute;
+    top: 10%;
+}
+
+@media (max-width: 435px) {
+    .logo-nav {
+        width: 80px; 
+    }
+}
+
+
+/*---------------------------------------------------------- FORM ENTRATA ---------------------------------------------*/
+
+
+.bebas-neue-regular {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #99824c;
+    font-size: 5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.sottoTitolo {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #99824c;
+    font-size: 3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.mybtnForm {
+    background-color: #113476;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    outline: none;
+}
+
+    .mybtnForm:hover {
+        background-color: #0e2a5a;
+        transform: translateY(-2px);
+    }
+
+    .mybtnForm:active {
+        background-color: #0c2450;
+        transform: translateY(1px);
+    }
+
+.btnCompletaForm {
+    background-color: #99824c;
+    color: #fff;
+    border: 2px solid #8f7a3c;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+    .btnCompletaForm:hover {
+        background-color: #bfa76e;
+        color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+
+
+
+/*-------------------------------------------------------- HOMEPAGE  ----------------------------------------------*/
+
+
+@media (max-width: 917px) {
+    .sponsor {
+        display: none;
+    }
+}
+
+.carousel-container {
+    display: flex;
+    overflow: hidden;
+    background: white;
+}
+
+.carousel-slide {
+    display: flex;
+    white-space: nowrap;
+    animation: slide 60s linear infinite;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-40%);
+    }
+}
+
+.carousel-slide img {
+    height: 60px;
+    margin-right: 50px; 
+}
+
+
+.lastMatchBg {
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url('./img/totStadium.jpg') no-repeat center center;
+}
+
+.progress-bar {
+    width: 0%; 
+    transition: width 3s ease-in-out; 
+}
+
+
+
+@media (max-width: 768px) {
+    .carousel-item img {
+        max-height: 400px;
+        min-height: 400px;
+    }
+}
+
+.custom-carousel-p {
+    text-shadow: 4px 4px 7px rgba(0, 0, 0, 1);
+}
+
+
+
+
+.rubik {
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+@media (min-width: 992px) and (max-width: 1399px) {
+    .custom-last-match .result-container {
+        order: 3;
+        flex-basis: 100%;
+    }
+
+    .result-container {
+        padding-top: 10px
+    }
+}
+
+@media (max-width: 413px) {
+    .custom-last-match .result-container {
+        order: 3;
+        flex-basis: 100%;
+    }
+
+    .result-container {
+        padding-top: 10px
+    }
+}
+
+
+.store {
+    position: relative;
+}
+
+.store-titolo1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.store-titolo1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #ff416c;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: color-shift 3s infinite alternate ease-in-out;
+}
+
+@keyframes color-shift {
+    0% {
+        color: #ff416c; /* Rosa */
+        text-shadow: 0 0 8px #ff4b2b; /* Ombra arancione */
+    }
+
+    50% {
+        color: #ff4b2b; /* Arancione */
+        text-shadow: 0 0 8px #ff416c; /* Ombra rosa */
+    }
+
+    100% {
+        color: #ff416c; /* Torna al rosa */
+        text-shadow: 0 0 8px #ff4b2b; /* Ombra arancione */
+    }
+}
+
+
+.store-titolo2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+
+
+.store-titolo2 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #ff416c;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: color-shift 3s infinite alternate ease-in-out;
+}
+
+
+
+.store-bottone {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: white;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.19), 0 8px 17px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .store-bottone:hover, .store-bottone:focus {
+        transform: translate(-50%, -50%) scale(1.1); /* Mantiene il bottone centrato e lo ingrandisce */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.24), 0 12px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .store-bottone:active {
+        transform: translate(-50%, -50%) scale(0.95); /* Mantiene il bottone centrato e lo rimpicciolisce */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.22), 0 6px 10px rgba(0, 0, 0, 0.23);
+    }
+
+.store-img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(255,255,255,0.1);
+}
+
+@media (max-width: 768px) {
+    .store-img {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .store-titolo1, .store-titolo2 {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 970px) {
+    .store-titolo1, .store-titolo2 {
+        font-size: 1rem;
+    }
+}
+
+
+
+@media (max-width: 1200px) {
+    .store-bottone {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 970px) {
+    .store-bottone {
+        font-size: 0.8rem;
+    }
+}
+
+
+.bigliettiHome {
+    height: 60vh;
+    background-image: url('./img/biglietti.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* --------------------------------------------------------------- PAGINA PRODOTTI ----------------------------------------------- */
+
+
+.titoloProdotti {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin-block: 15px;
+    font-size: 48px;
+    color: #A87C2A;
+    font-weight: bold;
+    padding: 20px 30px;
+    border-radius: 10px;
+    background-color: #000;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    /* Animazione */
+    animation: colorShift 7s infinite alternate;
+}
+
+@keyframes colorShift {
+    0%, 100% {
+        background-color: #000; /* Nero all'inizio e alla fine */
+    }
+
+    50% {
+        background-color: #FFF; /* Bianco a metà dell'animazione */
+    }
+}
+
+.sfondo-card {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.card-title {
+    color: #99824c;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.8rem;
+}
+
+.btn-crea {
+   text-decoration: none;
+   background-color: white;
+   color: black;
+   padding: 10px 20px;
+   border-radius: 10px;
+   font-size: 1.2rem;
+   font-weight: bold;
+}
+
+.add-cart {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333; 
+    background-color: #f8f9fa; 
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+    .add-cart:hover {
+        background-color: #e2e6ea; 
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .add-cart:active {
+        background-color: #cbd3da; 
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+.details-btn {
+    padding: 11px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    background-color: #ca3da2b5;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+    .details-btn:hover {
+        background-color: #f0f0f0;
+        border-color: #bfbfbf; 
+        box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    }
+
+    .details-btn:active {
+        background-color: #e0e0e0; 
+        border-color: #adadad; 
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .discountPremium {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 369px) {
+    .discountPremium {
+        flex-direction: column;
+    }
+}
+
+
+.btn-up {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+    .btn-up:hover {
+        background-color: #f0f0f0;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        transform: translateY(-2px);
+    }
+
+
+/*---------------------------------- PAGINA DETTAGLI --------------------------------------*/
+.detailsCard {
+    color: #99824c;
+    font-weight: bold;
+}
+
+.dettagli-bottone {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: white;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.19), 0 8px 17px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/*---------------------------------- PAGINA CARRELLO--------------------------------------*/
+
+
+/*---------------------------------- PAGINE PLAYERS --------------------------------------*/
+
+.titolo-player {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    color: #99824c;
+    font-size: 4rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+.custom-btn-player {
+    background-color: #EF0107;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+    .custom-btn-player:hover, .custom-btn-player:focus {
+        background-color: #B00205;
+        box-shadow: 0 6px 12px rgba(0, 123, 255, 0.5);
+        cursor: pointer;
+        outline: none;
+    }
+
+
+.modal-body {
+    background-color: #fff; /* White background for clarity */
+    color: #333; /* Dark grey text for readability */
+    font-family: 'Arial', sans-serif; /* Modern font */
+    padding: 20px; /* Padding for spacing inside the modal */
+    border-radius: 8px; /* Rounded corners for the modal */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+    .modal-body p {
+        line-height: 1.6; /* Increase line-height for better readability */
+        margin-bottom: 10px; /* Space between paragraphs */
+    }
+
+    .modal-body strong {
+        color: #EF0107; /* Arsenal Red for emphasis */
+        margin-right: 5px; /* Spacing after label */
+    }
+
+
+/*---------------------------------- PAGINA PARTITE --------------------------------------*/
+.special-background {
+    background: url('./imgPartite/champions.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 55%;
+}
+
+.sfondo {
+    background: url('./imgPartite/premier.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 52%;
+}
+
+.data-partita {
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+/*---------------------------------- PAGINA TIPO POSTO --------------------------------------*/
+@keyframes slideFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.card-anim-left {
+    animation: slideFromLeft 1s ease-out forwards;
+}
+
+.card-anim-right {
+    animation: slideFromRight 1s ease-out forwards;
+}
+
+
+/*---------------------------------- PAGINA FINALE TICKET --------------------------------------*/
+
+.special-background-ticket {
+    background: url('./imgPartite/champions.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 40%;
+}
+
+/*---------------------------------- PAGINA STANDING ---------------------------------------------*/
+
+.champions-bg {
+    background-image: url('./imgPartite/champions.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 60%;
+    color: transparent;
+}
+
+.europa-bg {
+    background-image: url('./imgPartite/europa.jpg');
+    background-size: cover;
+    background-position-y: 9%;
+    color: transparent;
+}
+
+@media (max-width: 1400px) {
+    .award-column {
+        display: none;
+    }
+}
+
+@media (max-width: 992px){
+    .gols{
+        display: none;
+    }
+}
+
+@media (max-width: 768px){
+    .form{
+        display: none;
+    }
+}
+
+@media (max-width: 576px){
+    .result{
+        display: none !important;
+    }
+}

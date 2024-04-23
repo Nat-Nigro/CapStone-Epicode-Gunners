@@ -1,0 +1,204 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@* Custom Toasts *@
+
+@if (TempData["LoginFallito"] != null)
+{
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+         toastr.options = {
+     "closeButton": true,
+     "debug": false,
+     "newestOnTop": false,
+     "progressBar": true,
+     "positionClass": "toast-top-center",
+     "preventDuplicates": false,
+     "onclick": null,
+     "showDuration": "500",
+     "hideDuration": "1000",
+     "timeOut": "5000",
+     "extendedTimeOut": "1000",
+     "showEasing": "swing",
+     "hideEasing": "linear",
+     "showMethod": "fadeIn",
+     "hideMethod": "fadeOut"
+ }
+ toastr.warning('@TempData["LoginFallito"]')
+    </script>
+}
+
+@if (TempData["Registrazione Fallita"] != null)
+{
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+    toastr.options = {
+     "closeButton": true,
+     "debug": false,
+     "newestOnTop": false,
+     "progressBar": true,
+     "positionClass": "toast-top-center",
+     "preventDuplicates": false,
+     "onclick": null,
+     "showDuration": "500",
+     "hideDuration": "1000",
+     "timeOut": "5000",
+     "extendedTimeOut": "1000",
+     "showEasing": "swing",
+     "hideEasing": "linear",
+     "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+ }
+ toastr.warning('@TempData["Registrazione Fallita"]')
+    </script>
+
+}
+
+@if (TempData["Logout"] != null)
+{
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.options = {
+    "closeButton": true,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": true,
+    "positionClass": "toast-top-center",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "500",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+}
+toastr.warning('@TempData["Logout"]')
+    </script>
+}
+
+
+@if (TempData["TicketsPage"] != null)
+{
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.options = {
+    "closeButton": true,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": true,
+    "positionClass": "toast-top-center",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "500",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+        }
+toastr.danger('@TempData["TicketsPage"]')
+    </script>
+}
+
+
+@if (TempData["AddCartFailed"] != null)
+{
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+       toastr.options = {
+         "closeButton": true,
+         "debug": false,
+         "newestOnTop": false,
+         "progressBar": true,
+         "positionClass": "toast-top-center",
+         "preventDuplicates": false,
+         "onclick": null,
+         "showDuration": "500",
+         "hideDuration": "1000",
+         "timeOut": "5000",
+         "extendedTimeOut": "1000",
+         "showEasing": "swing",
+         "hideEasing": "linear",
+         "showMethod": "fadeIn",
+         "hideMethod": "fadeOut"
+         }
+     toastr.warning('@TempData["AddCartFailed"]')
+    </script>
+}
+
+
+
+@*--------------------------------------------------------------------*@
+
+<style>
+    .bg {
+        background: url('../Content/img/formEntrata.png') no-repeat center;
+        background-size: cover;
+        min-height: 90vh;
+    }
+</style>
+
+
+<div class="bg">
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="text-center py-1 bebas-neue-regular">Gunners</h1>
+            <p class="text-center sottoTitolo ">You cant't buy class, be faithful forever</p>
+
+        </div>
+
+
+        <div class="d-flex justify-content-between mb-3">
+            <button id="btn-show-login" class="mybtnForm rounded">SignIn</button>
+            <button id="btn-show-register" class="mybtnForm ">SignUp</button>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 d-none" id="login-view">
+
+                @Html.Partial("_PartialLogin")
+            </div>
+            <div class="col-md-12 d-none" id="register-view">
+
+                @Html.Partial("_PartialRegister")
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Inizialmente mostriamo la vista del login
+            document.getElementById('login-view').classList.remove('d-none');
+
+            document.getElementById('btn-show-login').addEventListener('click', function () {
+                document.getElementById('login-view').classList.remove('d-none');
+                document.getElementById('register-view').classList.add('d-none');
+            });
+
+            document.getElementById('btn-show-register').addEventListener('click', function () {
+                document.getElementById('register-view').classList.remove('d-none');
+                document.getElementById('login-view').classList.add('d-none');
+            });
+        });
+
+    </script>
+}
+
+
+
+
+
+
