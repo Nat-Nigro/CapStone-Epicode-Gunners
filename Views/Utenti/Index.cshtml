@@ -1,0 +1,162 @@
+﻿@model IEnumerable<HomeTeamWebSite.Models.Utenti>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+</style>
+
+<h2 class="text-center my-3">User and account management</h2>
+
+<!-- Modal -->
+<div class="modal fade" id="upgradeModal" tabindex="-1" role="dialog" aria-labelledby="upgradeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="upgradeModalLabel">Upgrade Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to upgrade to Premium?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirm-upgrade">Upgrade</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container min-vh-100">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cognome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mail)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                Account Type
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cognome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mail)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                @if (item.TipoAccount == "Premium")
+                {
+                    <td class="fw-bold text-success">
+                        @Html.DisplayFor(modelItem => item.TipoAccount)
+                    </td>
+                }
+                else
+                {
+                    <td class="fw-bold">
+                        @Html.DisplayFor(modelItem => item.TipoAccount)
+                    </td>
+                }
+
+
+                <td class="d-flex align-items-center justify-content-between">
+
+                    @if (item.Ruolo == 1)
+                    {
+
+                        if (item.TipoAccount == "Standard")
+                        {
+                            using (Html.BeginForm("UpGrade", "Utenti", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <input type="hidden" name="id" value="@item.IdUtente" />
+                                <input type="submit" value="Upgrade to Premium" class="btn-upgrade" data-toggle="modal" data-target="#upgradeModal" />
+                            }
+                        }
+                        else
+                        {
+                            using (Html.BeginForm("DownGrade", "Utenti", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <input type="hidden" name="id" value="@item.IdUtente" />
+                                <input type="submit" value="Downgrade to Standard" class="btn-downgrade" />
+                            }
+                        }
+                        @Html.ActionLink("Delete", "Delete", new { id = item.IdUtente }, new { @class = "btn btn-danger " })
+                    }
+                    else
+                    {
+                        <p>No action available</p>
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.btn-upgrade').click(function (e) {
+            e.preventDefault(); // Previene l'invio predefinito del form
+            var form = $(this).closest('form'); // Trova l'elemento form
+            $('#upgradeModal').modal('show'); // Mostra il modale
+
+            $('#confirm-upgrade').off('click').on('click', function () { // Rimuovi il vecchio gestore e aggiungi un nuovo gestore
+                $.ajax({
+                    url: form.attr('action'),
+                    type: form.attr('method'),
+                    data: form.serialize(),
+                    success: function (response) {
+                        console.log('Aggiornamento avvenuto con successo');
+                        $('#upgradeModal').modal('hide'); // Nascondi il modale dopo il successo
+                    },
+                    error: function () {
+                        console.log('Errore');
+                }
+                });
+            });
+        });
+
+        // Aggiungi questo gestore per l'evento di chiusura completa del modale
+        $('#upgradeModal').on('hidden.bs.modal', function () {
+            location.reload(); // Refresh della pagina quando il modale si chiude completamente
+        });
+    });
+
+
+</script>

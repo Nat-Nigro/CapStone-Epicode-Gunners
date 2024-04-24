@@ -137,6 +137,7 @@
     <Compile Include="Controllers\ProdottiController.cs" />
     <Compile Include="Controllers\StandingController.cs" />
     <Compile Include="Controllers\TipoPostoController.cs" />
+    <Compile Include="Controllers\UtentiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -218,14 +219,15 @@
     <Content Include="Views\Carrello\Index.cshtml" />
     <Content Include="Views\Partite\Create.cshtml" />
     <Content Include="Views\Partite\Delete.cshtml" />
-    <Content Include="Views\Partite\Details.cshtml" />
-    <Content Include="Views\Partite\Edit.cshtml" />
     <Content Include="Views\Partite\Index.cshtml" />
     <Content Include="Views\TipoPosto\Delete.cshtml" />
     <Content Include="Views\TipoPosto\Index.cshtml" />
     <Content Include="Views\Biglietti\Delete.cshtml" />
     <Content Include="Views\Biglietti\Index.cshtml" />
     <Content Include="Views\Standing\Index.cshtml" />
+    <Content Include="Views\Utenti\Create.cshtml" />
+    <Content Include="Views\Utenti\Delete.cshtml" />
+    <Content Include="Views\Utenti\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

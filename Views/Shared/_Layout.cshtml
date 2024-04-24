@@ -13,7 +13,7 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-md navbar-toggleable-md navbar-dark bg-dark">
         <div class="container-fluid">
             <img src="~/Content/img/ArsenalLogo.png" class="logo-nav mb-2" width="100" />
             @Html.ActionLink("Nome applic", "Index", "Home", new { area = "" }, new { @class = "navbar-brand text-dark" })
@@ -21,13 +21,17 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+            <div class="collapse navbar-collapse d-md-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Home", "Home", "Home", new { area = "" }, new { @class = "nav-link text-center text-white " })</li>
                     <li>@Html.ActionLink("Official Store", "Index", "Prodotti", new { area = "" }, new { @class = "nav-link text-center text-white" })</li>
                     <li>@Html.ActionLink("Matches - Tickets", "Index", "Partite", new { area = "" }, new { @class = "nav-link text-center text-white" })</li>
                     <li>@Html.ActionLink("Players", "Index", "Players", new { area = "" }, new { @class = "nav-link text-center text-white" })</li>
                     <li>@Html.ActionLink("Standings", "Index", "Standing", new { area = "" }, new { @class = "nav-link text-center text-white" })</li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("User Managment", "Index", "Utenti", new { area = "" }, new { @class = "nav-link text-center text-white" })</li>
+                    }
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Logout", "Logout", "Home", new { area = "" }, new { @class = "nav-link text-center text-danger " })</li>
@@ -40,7 +44,7 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-link text-center text-white"><i class="bi bi-person-circle"></i> @User.Identity.Name</li>
+                        <li class="nav-link text-center text-white logo-user"><i class="bi bi-person-circle"></i> @User.Identity.Name</li>
                     </ul>
                 }
 
@@ -57,13 +61,13 @@
                 <div class="d-flex p-2 justify-content-around">
 
                     <a href="https://www.instagram.com/arsenal/" target="_blank"> <img src="~/Content/img/instagram.png" alt="instagram  logo" width="50" height="40" /></a>
-                    @{ 
+                    @{
                         string tiktokLink = "https://www.tiktok.com/@arsenal";
                     }
-                    <a href="@tiktokLink" target="_blank"><img src="~/Content/img/tiktok.png" alt="twitter logo" width="50" height="40" /></a> 
-                    <a href="https://t.me/s/arsenalivetv?before=5019" target="_blank"><img src="~/Content/img/telegram.png" alt="telegram logo" width="50" height="40" /></a> 
+                    <a href="@tiktokLink" target="_blank"><img src="~/Content/img/tiktok.png" alt="twitter logo" width="50" height="40" /></a>
+                    <a href="https://t.me/s/arsenalivetv?before=5019" target="_blank"><img src="~/Content/img/telegram.png" alt="telegram logo" width="50" height="40" /></a>
                     <a href="https://twitter.com/Arsenal" target="_blank"><img src="~/Content/img/twitter.png" width="50" height="40" /></a>
-                    <a href="https://www.facebook.com/Arsenal" target="_blank"><img src="~/Content/img/facebook.png" width="50" height="40" /></a> 
+                    <a href="https://www.facebook.com/Arsenal" target="_blank"><img src="~/Content/img/facebook.png" width="50" height="40" /></a>
                 </div>
             </div>
             <div class="mx-5">

@@ -161,14 +161,14 @@ namespace HomeTeamWebSite.Controllers
             base.Dispose(disposing);
         }
 
-        [Authorize(Roles = "Admin, Utente")]
+
         // Action per aggiungere un prodotto al carrello
         public ActionResult AddToCart(int id, int Quantita)
         {
 
             if (!User.Identity.IsAuthenticated)
             {
-                TempData["AddCartFaild"] = "You must be logged in to add a product to the cart";
+                TempData["AddCartFailed"] = "You must be logged in to add a product to the cart";
                 return RedirectToAction("Index", "Home");
 
             }

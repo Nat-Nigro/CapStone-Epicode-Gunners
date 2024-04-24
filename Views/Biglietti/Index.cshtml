@@ -19,15 +19,13 @@
     {
         <div class="card mb-3">
             <div class="card-header bg-dark text-white">
-                Ticket:
+                <h4>Ticket:</h4>
             </div>
-            <div class="card-body row @(item.IdPartita == 1 ? "special-background-ticket" : "sfondo") m-0">
-               
-                <div class="col-md-8 p-0">
-                   
+            <div class="card-body row @(item.IdPartita == 1 ? "special-background-ticket" : "sfondo") m-0">           
+                <div class="col-md-8 p-0">         
                     <div class="p-3">
                    
-                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Partite.SquadraCasa) vs @Html.DisplayFor(modelItem => item.Partite.SquadraOspite)</h5>
+                        <h5 class="card-title2 ">@Html.DisplayFor(modelItem => item.Partite.SquadraCasa) vs @Html.DisplayFor(modelItem => item.Partite.SquadraOspite)</h5>
                         <h3 class="card-title text-white">@Html.DisplayFor(modelItem => item.Partite.Data)</h3>
                         <p class="card-text fw-bold text-white">Sector: @Html.DisplayFor(modelItem => item.TipoPosto.Titolo)</p>
                         <p class="card-text fw-bold text-white">Price: <span id="price-@item.IdBiglietti" data-base-price="@Html.DisplayFor(modelItem => item.TipoPosto.Prezzo)">@Html.DisplayFor(modelItem => item.TipoPosto.Prezzo)</span>£ - Each</p>
@@ -38,7 +36,7 @@
                             <div class="d-flex align-items-center">
                                 <label for="Quantita" class="form-label fw-bold me-1 text-white">Quantity:</label>
                                 <input id="Quantita" type="number" name="quantita" value="1" min="1" max="10" class="form-control w-auto" style="width: 60px;">
-                                <input type="submit" value="Confirm" class="btn btn-success ms-3" />
+                                <input type="submit" value="Confirm" class="purchase-confirm-btn ms-3" />
                             </div>
                         }
                     </div>
@@ -50,7 +48,7 @@
                 </div>
             </div>
             <div class="card-footer text-muted bg-dark">
-                @Html.ActionLink("Delete Ticket", "Delete", new { id = item.IdBiglietti }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Delete Ticket", "Delete", new { id = item.IdBiglietti }, new { @class = "btn btn-danger my-2 fw-bold" })
             </div>
         </div>
     }

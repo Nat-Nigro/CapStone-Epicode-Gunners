@@ -39,6 +39,18 @@
                 <dd class="col-sm-8">
                     @GenerateRandomCode()
                 </dd>
+                <dt class="col-sm-4">
+                    Price:
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.TipoPosto.Prezzo) £
+                </dd>
+                <dt class="col-sm-4">
+                    Date:
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Partite.Data)
+                </dd>
             </dl>
         </div>
         <div class="card-footer">

@@ -72,14 +72,15 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save Changes" class="btn btn-success my-2" />
+            <div class="d-flex align-items-center my-3">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save Changes" class="btn btn-success me-2" />
+                    </div>
                 </div>
-            </div>
-            <div class="">
-                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-info mb-2" })
-
+                <div class="">
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-info " })
+                </div>
             </div>
         </div>
     }
